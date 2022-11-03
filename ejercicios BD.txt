@@ -8,8 +8,52 @@ Ejercicios SQL
 	SELECT * FROM employees WHERE employeeNumber IN 
 		(SELECT DISTINCT reportsTo FROM employees WHERE reportsTo IS NOT NULL);
 
-2) Seleccione a todos los empleados que no son jefes
+3) Seleccione a todos los empleados que no son jefes
 	SELECT * FROM employees WHERE employeeNumber NOT IN 
 		(SELECT DISTINCT reportsTo FROM employees WHERE reportsTo IS NOT NULL);
+	
+4) Seleccione todas las columnas de los clientes que se encuentren en USA.
+
+	SELECT * FROM customers 
+	WHERE country="USA";
+
+5) Seleccione el nombre y telefono de los clientes cuyo nombre empiece con "M".
+
+	SELECT customerName,phone 
+	FROM customers 
+	WHERE customerName LIKE "M%";
+
+6) Seleccione todas las columnas de los clientes que se encuentren en alemania y su nombre contenga "&" ordenados por nombre descendente
+
+	SELECT * FROM customers 
+	WHERE country="Germany" 
+	AND customerName LIKE "%&%" 
+	ORDER BY customerName DESC;
+
+7) Seleccione todas las columnas de las ordenes realizadas el año "2004" ordenas por fecha de envio.
+	
+	SELECT * FROM orders 
+	WHERE orderDate 
+	BETWEEN "2004-01-01" AND "2004-12-31" 
+	ORDER BY shippedDate;
+
+8)seleccione todas las columnas de los pagos realizados en 2003 cuyo monto sea mayor o igual a 1000 ordenado por monto decendente.
+
+	SELECT * FROM payments 
+	WHERE paymentDate 
+	BETWEEN "2003-01-01" AND "2003-12-31" AND amount>=1000 
+	ORDER BY amount DESC;
+
+9)Seleccione los 10 pagos mas altos del 2004.
+	
+	SELECT * FROM payments 
+	WHERE paymentDate BETWEEN "2004-01-01" AND "2004-12-31" 
+	ORDER BY amount DESC LIMIT 10;
+
+10)Seleccione los 10 pagos mas bajos del 2004.
+	
+	SELECT * FROM payments 
+	WHERE paymentDate BETWEEN "2004-01-01" AND "2004-12-31" 
+	ORDER BY amount ASC LIMIT 10;
 	
 	
