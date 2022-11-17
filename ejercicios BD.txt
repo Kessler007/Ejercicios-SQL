@@ -73,3 +73,28 @@ Ejercicios SQL
 	JOIN products ON orderdetails.productCode=products.productCode 
 	JOIN productlines ON products.productLine=productlines.productLine 
 	WHERE productlines.productLine="Motorcycles";
+	
+13)Seleccionar Todos los productos de la linea "Trains"
+
+	SELECT * FROM products 
+	WHERE productLine="Trains";
+	
+14)Seleccionar 	todos los pagos realizados por "Mini Wheels Co."
+
+	SELECT * FROM payments
+	JOIN customers ON customers.customerNumber=payments.customerNumber
+	WHERE customername="Mini Wheels Co.";
+	
+15)Seleccionar todos los pagos realizados por clientes de "Spain"
+	
+	SELECT * FROM payments 
+	JOIN customers ON customers.customerNumber=payments.customerNumber 
+	WHERE country="Spain";
+	
+16)Seleccionar todos los productos correspondientes a las ordenes de compra   realizadas el "2003"
+
+	SELECT * FROM products 
+	JOIN orderdetails ON products.productCode=orderdetails.productCode 
+	JOIN orders ON orderdetails.orderNumber=orders.orderNumber 
+	WHERE orderDate BETWEEN "2003-01-01" AND "2003-12-31";
+	
